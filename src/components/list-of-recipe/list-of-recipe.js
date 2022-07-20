@@ -1,37 +1,17 @@
-import React, { useEffect, useState } from "react";
-import database from "../../firebase/firebase";
-import db from "../../firebase/firebase";
+import { useContext } from "react";
+import { CoffeeContext } from "../../context/coffee-context";
+import { Link } from "react-router-dom";
 
 const ListOfRecipe = () => {
-  const [recipes, setRecipes] = useState([]);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [coffeAmount, setCoffeAmount] = useState(0);
-
-  useEffect(() => {
-    const getRecipesFromFirebase = [];
-    const recipeFromFirebase = db
-      .collection("recipes")
-      .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          getRecipesFromFirebase.push({ ...doc.data(), key: doc.id });
-        });
-        setRecipes(getRecipesFromFirebase);
-        setIsSuccess(false);
-      });
-
-    return () => recipeFromFirebase();
-  }, []);
-
-  useState(() => {
-    console.log(recipes);
-  }, []);
-
+  const { recipes } = useContext(CoffeeContext);
   return (
     <div className="list-of-recipe">
-      {recipes.map((recipe) => {
+      {recipes?.map((recipe) => {
         return (
           <div className="recipe-item">
-            <h1>{recipe.coffeVariables.recipeName}</h1>
+            <Link to={`/recipeList/${recipe.key}`}>
+              <h1>{recipe.coffeVariables.recipeName}</h1>
+            </Link>
             <ul>Burnrate: {recipe.coffeVariables.burnRate}</ul>
             <ul>Coffe amount: {recipe.coffeVariables.coffe} gram</ul>
             <ul>Dishes: {recipe.coffeVariables.dishes}</ul>

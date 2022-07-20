@@ -4,13 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App";
 import NavBar from "./components/nav-bar/nav-bar";
+import { CoffeeContextProvider } from "./context/coffee-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <NavBar />
-      <App />
-    </BrowserRouter>
+    <CoffeeContextProvider>
+      <BrowserRouter>
+        <NavBar />
+        <App />
+      </BrowserRouter>
+    </CoffeeContextProvider>
   </React.StrictMode>
 );

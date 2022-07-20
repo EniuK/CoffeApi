@@ -1,42 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import database from "../../firebase/firebase";
 import "./recipes.styles.scss";
+import { CoffeeContext } from "../../context/coffee-context";
+
 const Recipe = () => {
-  const obj = {
-    recipeName: "",
-    grind: "",
-    water: 0,
-    temp: 0,
-    flood: 0,
-    coffe: 0,
-    burnRate: "",
-    dishes: "",
-    description: "",
-  };
+const { Push, handleChange, coffeVariables } = useContext(CoffeeContext);
 
-  const [coffeVariables, setCoffeVariables] = useState(obj);
 
-  const Push = () => {
-    if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
-      return;
-    } else {
-      database
-        .collection(`recipes`)
-        .add({
-          coffeVariables,
-        })
-        .catch(alert);
-
-      setCoffeVariables(obj);
-    }
-  };
-
-  const handleChange = (event) => {
-    setCoffeVariables({
-      ...coffeVariables,
-      [event.target.name]: event.target.value,
-    });
-  };
 
   return (
     <div className="recipe">
