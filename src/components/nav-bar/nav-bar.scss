@@ -1,0 +1,16 @@
+.container {
+  .navbar-container {
+    display: flex;
+  }
+  .navbar {
+    display: flex;
+    flex-direction: row;
+    margin: 0 10px;
+    flex-grow: 3;
+    justify-content: center;
+    
+  }
+  h2 {
+    text-align: center;
+  }
+}
