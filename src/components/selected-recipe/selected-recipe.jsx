@@ -1,20 +1,21 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CoffeeContext } from "../../context/coffee-context";
 const SelectedRecipe = () => {
   const { recipes } = useContext(CoffeeContext);
+  const [recipe, setRecipe] = useState({});
+  const { id } = useParams();
+  const handleSetRecipe = () => {
+    const item = recipes.find((recipe) => recipe.key === id);
+    setRecipe(item);
+  };
+  useEffect(() => {
+    handleSetRecipe();
+  }, [recipe, id, setRecipe, handleSetRecipe]);
+  console.log(recipe);
+  console.log(id);
 
-  const { key } = useParams();
-
-
-
-  console.log(recipes);
-
-  return (
-    <div>
-      <p>Hello</p>
-    </div>
-  );
+  return <div className="recipe-wrapper"></div>;
 };
 
 export default SelectedRecipe;

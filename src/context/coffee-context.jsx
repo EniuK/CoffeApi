@@ -24,9 +24,6 @@ export const CoffeeContextProvider = ({ children }) => {
     return () => recipeFromFirebase();
   }, []);
 
-  useState(() => {
-    console.log(recipes);
-  }, []);
 
 const obj = {
   recipeName: "",
