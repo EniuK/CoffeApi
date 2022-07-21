@@ -1,3 +1,20 @@
-.list-of-recipe{
-    display: flex;
+.list-of-recipe {
+  display: flex;
+  flex-direction: column;
+
+  .link {
+    text-decoration: none;
+
+    .recipe-item {
+      display: flex;
+     
+      height: 70px;
+      justify-content: center;
+      border: 1px solid black;
+    }
+    .recipe-item:hover {
+      background-color: antiquewhite;
+      color: coral;
+    }
+  }
 }

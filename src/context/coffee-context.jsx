@@ -38,7 +38,7 @@ const obj = {
 };
 
 const [coffeVariables, setCoffeVariables] = useState(obj);
-
+const [recipe, setRecipe] = useState({});
 const Push = () => {
   if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
     return;
@@ -61,15 +61,22 @@ function handleChange(event) {
   });
 }
 
+  const handleSetRecipe = (id) => {
+    const item = recipes.find((recipe) => recipe.key === id);
+    setRecipe(item);
+  };
+
 const CoffeeContextProviderValue = useMemo(
   () => ({
+    recipe,
     recipes,
     isSuccess,
     Push,
     handleChange,
     coffeVariables,
+    handleSetRecipe
   }),
-  [recipes, isSuccess, Push, handleChange, coffeVariables]
+  [recipes,recipe,  isSuccess, Push, handleChange, coffeVariables, handleSetRecipe]
 );
 
   return (
