@@ -24,60 +24,67 @@ export const CoffeeContextProvider = ({ children }) => {
     return () => recipeFromFirebase();
   }, []);
 
+  const obj = {
+    recipeName: "",
+    grind: "",
+    water: "",
+    temp: "",
+    flood: "",
+    coffe: "",
+    burnRate: "",
+    dishes: "",
+    description: "",
+  };
 
-const obj = {
-  recipeName: "",
-  grind: "",
-  water: 0,
-  temp: 0,
-  flood: 0,
-  coffe: 0,
-  burnRate: "",
-  dishes: "",
-  description: "",
-};
+  const [coffeVariables, setCoffeVariables] = useState(obj);
+  const [recipe, setRecipe] = useState({});
+  const Push = () => {
+    if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
+      return;
+    } else {
+      database
+        .collection(`recipes`)
+        .add({
+          coffeVariables,
+        })
+        .catch(alert);
 
-const [coffeVariables, setCoffeVariables] = useState(obj);
-const [recipe, setRecipe] = useState({});
-const Push = () => {
-  if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
-    return;
-  } else {
-    database
-      .collection(`recipes`)
-      .add({
-        coffeVariables,
-      })
-      .catch(alert);
+      setCoffeVariables(obj);
+    }
+  };
 
-    setCoffeVariables(obj);
+  function handleChange(event) {
+    setCoffeVariables({
+      ...coffeVariables,
+      [event.target.name]: event.target.value,
+    });
   }
-};
-
-function handleChange(event) {
-  setCoffeVariables({
-    ...coffeVariables,
-    [event.target.name]: event.target.value,
-  });
-}
 
   const handleSetRecipe = (id) => {
     const item = recipes.find((recipe) => recipe.key === id);
     setRecipe(item);
   };
 
-const CoffeeContextProviderValue = useMemo(
-  () => ({
-    recipe,
-    recipes,
-    isSuccess,
-    Push,
-    handleChange,
-    coffeVariables,
-    handleSetRecipe
-  }),
-  [recipes,recipe,  isSuccess, Push, handleChange, coffeVariables, handleSetRecipe]
-);
+  const CoffeeContextProviderValue = useMemo(
+    () => ({
+      recipe,
+      recipes,
+      isSuccess,
+      Push,
+      handleChange,
+      coffeVariables,
+      handleSetRecipe,
+    }),
+    [
+      recipes,
+      recipe,
+      isSuccess,
+      Push,
+      handleChange,
+      coffeVariables,
+      handleSetRecipe,
+    ]
+  );
 
   return (
     <CoffeeContext.Provider value={CoffeeContextProviderValue}>
