@@ -10,8 +10,12 @@ const ListOfRecipe = () => {
     <div className="list-of-recipe">
       {recipes?.map((recipe) => {
         return (
-          <Link className="link" to={`/recipeList/${recipe.key}`}>
-            <div className="recipe-item" key={recipes.key}>
+          <Link
+            className="link"
+            to={`/recipeList/${recipe.key}`}
+            key={Math.random()}
+          >
+            <div className="recipe-item">
               <h3>{recipe.coffeVariables.recipeName}</h3>
             </div>
           </Link>

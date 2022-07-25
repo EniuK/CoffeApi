@@ -8,21 +8,32 @@ export const CoffeeContext = createContext({
 export const CoffeeContextProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [isSuccess, setIsSuccess] = useState(false);
-
+  const [getRecipesFromFirebase, setGetRecipesFromFirebase] = useState([]);
+  const [click, setClick] = useState(false);
+  
+  
   useEffect(() => {
-    const getRecipesFromFirebase = [];
-    const recipeFromFirebase = database
+    const recipeFromFirebase =  database
       .collection("recipes")
       .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach(() => {
+          getRecipesFromFirebase.pop();
+        });
         querySnapshot.forEach((doc) => {
           getRecipesFromFirebase.push({ ...doc.data(), key: doc.id });
         });
         setRecipes(getRecipesFromFirebase);
-        setIsSuccess(false);
+        
+        
+        setGetRecipesFromFirebase([]);
       });
+    console.log(click);
 
-    return () => recipeFromFirebase();
-  }, []);
+    return () => {
+      recipeFromFirebase();
+    };
+  }, [click]);
+
 
   const obj = {
     recipeName: "",
@@ -48,7 +59,7 @@ export const CoffeeContextProvider = ({ children }) => {
           coffeVariables,
         })
         .catch(alert);
-
+      setClick(!click);
       setCoffeVariables(obj);
     }
   };
