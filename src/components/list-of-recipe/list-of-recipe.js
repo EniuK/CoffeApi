@@ -11,27 +11,25 @@ const ListOfRecipe = () => {
 
   useEffect(() => {
     setFilteredRecipes(recipes);
-  }, [recipes]);
-
-  useEffect(() => {
-    setFilteredRecipes(recipes);
     const newList = recipes.filter((recipe) => {
       return recipe.coffeVariables.recipeName
         .toLocaleLowerCase()
-        .includes(phrase);
+        .includes(phrase.toLocaleLowerCase());
     });
     setFilteredRecipes(newList);
-    console.log(filteredRecipes);
   }, [phrase, recipes]);
 
   return (
     <div className="list-of-recipe">
-      <div>
+      <div className="input-wrapper">
+        <div className="search">
         <input
+          className="filter"
           type="search"
           onChange={(e) => setPhrase(e.target.value)}
           placeholder="search recipes"
         />
+        </div>
       </div>
       {filteredRecipes?.map((recipe) => {
         return (

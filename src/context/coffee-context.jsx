@@ -10,7 +10,15 @@ export const CoffeeContextProvider = ({ children }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [getRecipesFromFirebase, setGetRecipesFromFirebase] = useState([]);
   const [click, setClick] = useState(false);
+  const [phrase, setPhrase] = useState("");
+  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
 
+  useEffect(() => {
+    setFilteredRecipes(recipes);
+    filteredRecipes.filter((recipe) => {
+      return recipe.coffeVariables.recipeName.toLowerCase().includes(phrase);
+    });
+  }, [phrase, recipes]);
 
   useEffect(() => {
     setGetRecipesFromFirebase([]);
