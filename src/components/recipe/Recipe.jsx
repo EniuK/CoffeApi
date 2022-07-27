@@ -4,9 +4,7 @@ import "./recipes.styles.scss";
 import { CoffeeContext } from "../../context/coffee-context";
 
 const Recipe = () => {
-const { Push, handleChange, coffeVariables } = useContext(CoffeeContext);
-
-
+  const { Push, handleChange, coffeVariables } = useContext(CoffeeContext);
 
   return (
     <div className="recipe">
@@ -91,7 +89,9 @@ const { Push, handleChange, coffeVariables } = useContext(CoffeeContext);
         required
         value={coffeVariables.description}
       />
-      <button onClick={Push}>PUSH</button>
+      <button onClick={Push} className="button">
+        PUSH
+      </button>
     </div>
   );
 };

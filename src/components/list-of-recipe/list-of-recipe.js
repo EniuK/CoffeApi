@@ -31,6 +31,7 @@ const ListOfRecipe = () => {
         />
         </div>
       </div>
+      <div>
       {filteredRecipes?.map((recipe) => {
         return (
           <Link
@@ -44,6 +45,7 @@ const ListOfRecipe = () => {
           </Link>
         );
       })}
+      </div>
     </div>
   );
 };

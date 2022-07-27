@@ -1,19 +1,34 @@
 .container {
+  text-align: center;
   .navbar-container {
     display: flex;
-  }
-  .navbar {
-    display: flex;
-    flex-direction: row;
-    margin: 0 10px;
-    flex-grow: 3;
-    justify-content: center;
-  }
-  h1 {
-    text-align: center;
-  }
 
-  .link {
-    text-decoration: none;
+    .navbar {
+      display: flex;
+      flex-direction: row;
+      padding: 0;
+      margin: 0 5px;
+      flex-grow: 3;
+      justify-content: center;
+    }
+    .link:hover {
+      color: darkgray;
+    }
+    .link:active {
+      color: lightblue;
+      transition: 0.01s;
+    }
+
+    .link {
+      color: black;
+      text-decoration: none;
+
+      text-transform: uppercase;
+      font-weight: 500;
+      display: inline-block;
+      width: 150px;
+      -webkit-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+    }
   }
 }
