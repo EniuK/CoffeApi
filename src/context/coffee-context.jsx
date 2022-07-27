@@ -10,11 +10,11 @@ export const CoffeeContextProvider = ({ children }) => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [getRecipesFromFirebase, setGetRecipesFromFirebase] = useState([]);
   const [click, setClick] = useState(false);
-  
-  
+
+
   useEffect(() => {
     setGetRecipesFromFirebase([]);
-    const recipeFromFirebase =  database
+    const recipeFromFirebase = database
       .collection("recipes")
       .onSnapshot((querySnapshot) => {
         querySnapshot.forEach(() => {
@@ -24,9 +24,6 @@ export const CoffeeContextProvider = ({ children }) => {
           getRecipesFromFirebase.push({ ...doc.data(), key: doc.id });
         });
         setRecipes(getRecipesFromFirebase);
-        
-        
-        
       });
     console.log(click);
 
@@ -34,7 +31,6 @@ export const CoffeeContextProvider = ({ children }) => {
       recipeFromFirebase();
     };
   }, [click]);
-
 
   const obj = {
     recipeName: "",

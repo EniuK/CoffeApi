@@ -7,15 +7,21 @@ const ListOfRecipe = () => {
   const { recipes } = useContext(CoffeeContext);
   const [phrase, setPhrase] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+  const [arr, setArr] = useState([]);
 
   useEffect(() => {
     setFilteredRecipes(recipes);
-    filteredRecipes.filter((recipe) => {
+  }, [recipes]);
+
+  useEffect(() => {
+    setFilteredRecipes(recipes);
+    const newList = recipes.filter((recipe) => {
       return recipe.coffeVariables.recipeName
         .toLocaleLowerCase()
-        .includes(phrase.toLocaleLowerCase());
+        .includes(phrase);
     });
-
+    setFilteredRecipes(newList);
+    console.log(filteredRecipes);
   }, [phrase, recipes]);
 
   return (
