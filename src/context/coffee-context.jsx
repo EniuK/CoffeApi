@@ -13,6 +13,7 @@ export const CoffeeContextProvider = ({ children }) => {
   
   
   useEffect(() => {
+    setGetRecipesFromFirebase([]);
     const recipeFromFirebase =  database
       .collection("recipes")
       .onSnapshot((querySnapshot) => {
@@ -25,7 +26,7 @@ export const CoffeeContextProvider = ({ children }) => {
         setRecipes(getRecipesFromFirebase);
         
         
-        setGetRecipesFromFirebase([]);
+        
       });
     console.log(click);
 

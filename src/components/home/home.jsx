@@ -9,7 +9,6 @@ const Home = () => {
         <ul>
           <li>Do not refresh site when you are in single recipe</li>
           <li>App cant delete or update recipes - ask creator to delete/update recipe</li>
-          <li>After adding recipe, remember to restart application to prevent buggy behaviour of recipes</li>
           <h3>I'll fix everything and add new features in future. Just be patient :)</h3>
         </ul>
       </div>
