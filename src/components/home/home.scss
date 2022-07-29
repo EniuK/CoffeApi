@@ -5,8 +5,13 @@ body {
 .home-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
-  h2 {
+  .about {
     justify-content: center;
+  }
+
+  .fun {
+    flex-direction: row;
   }
 }

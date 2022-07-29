@@ -30,7 +30,13 @@ const Home = () => {
       </div>
       <div className="fun">
         {beer.map((b) => {
-          return <img src={`${b.image_url}`} alt="" srcset="" />;
+          return (
+            <div className="fetcher">
+              <img src={`${b.image_url}`} alt="hej :)" srcset="" />
+              <h2>{b.name}</h2> <br />
+              <h3>{b.volume.value} %</h3>
+            </div>
+          );
         })}
       </div>
     </div>

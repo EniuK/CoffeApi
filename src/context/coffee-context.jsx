@@ -54,6 +54,11 @@ export const CoffeeContextProvider = ({ children }) => {
 
   const [coffeVariables, setCoffeVariables] = useState(obj);
   const [recipe, setRecipe] = useState({});
+  const handleSetRecipe = (id) => {
+    const item = recipes.find((recipe) => recipe.key === id);
+    setRecipe(item);
+  };
+  
   const Push = () => {
     if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
       return;
@@ -76,10 +81,7 @@ export const CoffeeContextProvider = ({ children }) => {
     });
   }
 
-  const handleSetRecipe = (id) => {
-    const item = recipes.find((recipe) => recipe.key === id);
-    setRecipe(item);
-  };
+  
 
   const CoffeeContextProviderValue = useMemo(
     () => ({
