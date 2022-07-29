@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
+import "./index.scss";
 import App from "./App";
 import NavBar from "./components/nav-bar/nav-bar";
 import { CoffeeContextProvider } from "./context/coffee-context";
