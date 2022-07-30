@@ -32,8 +32,8 @@ export const CoffeeContextProvider = ({ children }) => {
           getRecipesFromFirebase.push({ ...doc.data(), key: doc.id });
         });
         setRecipes(getRecipesFromFirebase);
+        console.log("context");
       });
-    console.log(click);
 
     return () => {
       recipeFromFirebase();
@@ -51,28 +51,26 @@ export const CoffeeContextProvider = ({ children }) => {
     dishes: "",
     description: "",
   };
+  const floodNumber = {
+    firstWater: "",
+    firstTime: "",
+    secondWater: "",
+    secondTime: "",
+    thirdWater: "",
+    thirdTime: "",
+    fourthWater: "",
+    fourthTime: "",
+  };
 
   const [coffeVariables, setCoffeVariables] = useState(obj);
-  const [recipe, setRecipe] = useState({});
-  const handleSetRecipe = (id) => {
-    const item = recipes.find((recipe) => recipe.key === id);
-    setRecipe(item);
-  };
-  
-  const Push = () => {
-    if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
-      return;
-    } else {
-      database
-        .collection(`recipes`)
-        .add({
-          coffeVariables,
-        })
-        .catch(alert);
-      setClick(!click);
-      setCoffeVariables(obj);
-    }
-  };
+  const [floodsVariables, setFloodsVariables] = useState(floodNumber);
+
+  function handleFlood(event) {
+    setFloodsVariables({
+      ...floodsVariables,
+      [event.target.name]: event.target.value,
+    });
+  }
 
   function handleChange(event) {
     setCoffeVariables({
@@ -81,26 +79,41 @@ export const CoffeeContextProvider = ({ children }) => {
     });
   }
 
-  
+  const Push = () => {
+    if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
+      return;
+    } else {
+      database
+        .collection(`recipes`)
+        .add({
+          coffeVariables,
+          floodsVariables,
+        })
+        .catch(alert);
+      setClick(!click);
+      setCoffeVariables(obj);
+      setFloodsVariables(floodNumber);
+    }
+  };
 
   const CoffeeContextProviderValue = useMemo(
     () => ({
-      recipe,
       recipes,
       isSuccess,
       Push,
       handleChange,
       coffeVariables,
-      handleSetRecipe,
+      handleFlood,
+      floodsVariables,
     }),
     [
       recipes,
-      recipe,
       isSuccess,
       Push,
       handleChange,
       coffeVariables,
-      handleSetRecipe,
+      handleFlood,
+      floodsVariables,
     ]
   );
 

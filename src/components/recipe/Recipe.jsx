@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import database from "../../firebase/firebase";
+import React, { useState, useContext, useEffect } from "react";
 import "./recipes.styles.scss";
 import { CoffeeContext } from "../../context/coffee-context";
 
 const Recipe = () => {
-  const { Push, handleChange, coffeVariables } = useContext(CoffeeContext);
+  const { Push, handleChange, coffeVariables, handleFlood, floodsVariables } =
+    useContext(CoffeeContext);
 
   return (
     <div className="recipe">
@@ -78,6 +78,83 @@ const Recipe = () => {
         required
         value={coffeVariables.dishes}
       />
+      <h3>FILL NUMBER OF FLOODS AND TIME PER FLOOD:</h3>
+      First flood:
+      <input
+        name="firstWater"
+        required
+        type="number"
+        className="multiple-inputs"
+        placeholder="water on first flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.firstWater}
+      />
+      <input
+        name="firstTime"
+        required
+        type="number"
+        className="multiple-inputs"
+        placeholder="time of first flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.firstTime}
+      />
+      Second flood:
+      <input
+        name="secondWater"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="water on second flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.secondWater}
+      />
+      <input
+        name="secondTime"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="time of second flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.secondTime}
+      />
+      Third flood:
+      <input
+        name="thirdWater"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="water on third flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.thirdWater}
+      />
+      <input
+        name="thirdTime"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="time of third flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.thirdTime}
+      />
+      Fourth flood:
+      <input
+        name="fourthWater"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="water on fourth flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.fourthWater}
+      />
+      <input
+        name="fourthTime"
+        type="number"
+        required
+        className="multiple-inputs"
+        placeholder="time of fourth flood"
+        onChange={(e) => handleFlood(e)}
+        value={floodsVariables.fourthTime}
+      />
       <p>Description</p>
       <textarea
         rows="14"
@@ -90,7 +167,7 @@ const Recipe = () => {
         value={coffeVariables.description}
       />
       <button onClick={Push} className="button">
-        PUSH
+        PUSH RECIPE
       </button>
     </div>
   );

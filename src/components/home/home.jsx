@@ -16,14 +16,13 @@ const Home = () => {
         Welcome to my aplication. Here's a list of things that you should be
         aware of
         <ul>
-          <li>Do not refresh site when you are in single recipe</li>
           <li>
             App cant delete or update recipes - ask creator to delete/update
             recipe
           </li>
           <h3>
             I'll fix everything and add new features in future. Just be patient
-            :)
+            :D
           </h3>
         </ul>
         <h4>Also, I'm gonna train here some features in react. </h4>
@@ -31,7 +30,7 @@ const Home = () => {
       <div className="fun">
         {beer.map((b) => {
           return (
-            <div className="fetcher">
+            <div className="fetcher" key={Math.random()}>
               <img src={`${b.image_url}`} alt="hej :)" srcset="" />
               <h2>{b.name}</h2> <br />
               <h3>{b.volume.value} %</h3>
