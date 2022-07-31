@@ -32,7 +32,6 @@ export const CoffeeContextProvider = ({ children }) => {
           getRecipesFromFirebase.push({ ...doc.data(), key: doc.id });
         });
         setRecipes(getRecipesFromFirebase);
-        console.log("context");
       });
 
     return () => {
