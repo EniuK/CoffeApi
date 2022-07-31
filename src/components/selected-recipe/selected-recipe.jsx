@@ -33,7 +33,7 @@ const SelectedRecipe = () => {
           <div>
             <h1>{recipe.coffeVariables.recipeName}</h1>
             <ul>Burnrate: {recipe.coffeVariables.burnRate}</ul>
-            <ul>Coffe amount: {recipe.coffeVariables.coffe} gram</ul>
+            <ul>Coffee amount: {recipe.coffeVariables.coffe} gram</ul>
             <ul>Dishes: {recipe.coffeVariables.dishes}</ul>
             <ul>Flood time: {recipe.coffeVariables.flood} seconds</ul>
             <ul>Grind clicks: {recipe.coffeVariables.grind} clicks</ul>
