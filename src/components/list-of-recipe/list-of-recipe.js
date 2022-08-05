@@ -7,7 +7,6 @@ const ListOfRecipe = () => {
   const { recipes } = useContext(CoffeeContext);
   const [phrase, setPhrase] = useState("");
   const [filteredRecipes, setFilteredRecipes] = useState(recipes);
-  const [arr, setArr] = useState([]);
 
   useEffect(() => {
     setFilteredRecipes(recipes);

@@ -1,14 +1,7 @@
+import { Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import "./home.scss";
 const Home = () => {
-  const [beer, setBeer] = useState([]);
-
-  useEffect(() => {
-    fetch("https://api.punkapi.com/v2/beers/random")
-      .then((res) => res.json())
-      .then((data) => setBeer(data));
-  }, []);
-
   return (
     <div className="home-container">
       <div className="about">
@@ -28,15 +21,7 @@ const Home = () => {
         <h4>Also, I'm gonna train here some features in react. </h4>
       </div>
       <div className="fun">
-        {beer.map((b) => {
-          return (
-            <div className="fetcher" key={Math.random()}>
-              <img src={`${b.image_url}`} alt="hej :)" srcset="" />
-              <h2>{b.name}</h2> <br />
-              <h3>{b.volume.value} %</h3>
-            </div>
-          );
-        })}
+        <Button>bootstrap button</Button>
       </div>
     </div>
   );
