@@ -80,6 +80,7 @@ export const CoffeeContextProvider = ({ children }) => {
 
   const Push = () => {
     if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
+      window.alert("please insert recipe");
       return;
     } else {
       database
