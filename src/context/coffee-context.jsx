@@ -38,21 +38,21 @@ export const CoffeeContextProvider = ({ children }) => {
       recipeFromFirebase();
     };
   }, [click]);
-
+  const { string, number } = require("yup");
   const obj = {
-    recipeName: "",
-    grind: "",
-    water: "",
-    temp: "",
-    flood: "",
-    coffe: "",
-    burnRate: "",
-    dishes: "",
-    description: "",
+    recipeName: string().required,
+    grind: number().required,
+    water: number().required,
+    temp: number().required,
+    flood: number().required,
+    coffe: number().required,
+    burnRate: string().required,
+    dishes: string().required,
+    description: string().required,
   };
   const floodNumber = {
-    firstWater: "",
-    firstTime: "",
+    firstWater: number().required,
+    firstTime: number().required,
     secondWater: "",
     secondTime: "",
     thirdWater: "",
@@ -79,8 +79,7 @@ export const CoffeeContextProvider = ({ children }) => {
   }
 
   const Push = () => {
-    if (JSON.stringify(coffeVariables) === JSON.stringify(obj)) {
-      window.alert("please insert recipe");
+    if (false) {
       return;
     } else {
       database
