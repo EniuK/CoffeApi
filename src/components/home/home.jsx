@@ -1,5 +1,4 @@
 import { Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
 import "./home.scss";
 const Home = () => {
   return (
@@ -22,6 +21,7 @@ const Home = () => {
       </div>
       <div className="fun">
         <Button>bootstrap button</Button>
+        doesn't do anything {`:)`}
       </div>
     </div>
   );

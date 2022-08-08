@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./recipes.styles.scss";
+
 import { CoffeeContext } from "../../context/coffee-context";
 
 const Recipe = () => {
@@ -25,6 +26,7 @@ const Recipe = () => {
         onChange={(e) => handleChange(e)}
         required
         value={coffeVariables.grind}
+        min={0}
       />
       Water amount:
       <input
@@ -34,6 +36,7 @@ const Recipe = () => {
         onChange={(e) => handleChange(e)}
         required
         value={coffeVariables.water}
+        min={0}
       />
       Temperature of water:
       <input
@@ -43,6 +46,7 @@ const Recipe = () => {
         onChange={(e) => handleChange(e)}
         required
         value={coffeVariables.temp}
+        min={0}
       />
       Time of flood:
       <input
@@ -52,6 +56,7 @@ const Recipe = () => {
         onChange={(e) => handleChange(e)}
         required
         value={coffeVariables.flood}
+        min={0}
       />
       Coffe amount:
       <input
@@ -61,6 +66,7 @@ const Recipe = () => {
         onChange={(e) => handleChange(e)}
         required
         value={coffeVariables.coffe}
+        min={0}
       />
       Burnrate of seed:
       <input
@@ -88,6 +94,7 @@ const Recipe = () => {
         placeholder="water on first flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.firstWater}
+        min={0}
       />
       <input
         name="firstTime"
@@ -97,6 +104,7 @@ const Recipe = () => {
         placeholder="time of first flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.firstTime}
+        min={0}
       />
       Second flood:
       <input
@@ -107,6 +115,7 @@ const Recipe = () => {
         placeholder="water on second flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.secondWater}
+        min={0}
       />
       <input
         name="secondTime"
@@ -116,6 +125,7 @@ const Recipe = () => {
         placeholder="time of second flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.secondTime}
+        min={0}
       />
       Third flood:
       <input
@@ -126,6 +136,7 @@ const Recipe = () => {
         placeholder="water on third flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.thirdWater}
+        min={0}
       />
       <input
         name="thirdTime"
@@ -135,6 +146,7 @@ const Recipe = () => {
         placeholder="time of third flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.thirdTime}
+        min={0}
       />
       Fourth flood:
       <input
@@ -145,6 +157,7 @@ const Recipe = () => {
         placeholder="water on fourth flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.fourthWater}
+        min={0}
       />
       <input
         name="fourthTime"
@@ -154,6 +167,7 @@ const Recipe = () => {
         placeholder="time of fourth flood"
         onChange={(e) => handleFlood(e)}
         value={floodsVariables.fourthTime}
+        min={0}
       />
       <p>Description</p>
       <textarea
